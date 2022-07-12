@@ -9,3 +9,4 @@ This is the archive of the earthquake catalogue python programs to generate the 
 ## Earthquake catalogue
 The earthquake catalogue is archived in nordic format (SEISAN). Detailed description can be found in Chin et al. (2022).
 ## Programs
+### ReadHyp.py
