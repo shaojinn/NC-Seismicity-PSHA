@@ -11,3 +11,7 @@ The earthquake catalogue is archived in nordic format (SEISAN). Detailed descrip
 ## Programs
 ### ReadHyp.py
 * Read an earthquake catalogue in nordic format to event and phase lists and optionally output a summary earthquake catalogue in csv format.
+### ML_inversion.py
+* Build A and B matrices and solve Ax = B to obtain parameters of a local magnitude function.
+* Earthquakes should be selected before creating matrices.
+###
