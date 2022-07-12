@@ -14,4 +14,5 @@ The earthquake catalogue is archived in nordic format (SEISAN). Detailed descrip
 ### ML_inversion.py
 * Build A and B matrices and solve Ax = B to obtain parameters of a local magnitude function.
 * Earthquakes should be selected before creating matrices.
-###
+### MFR.py
+* Find Magnitude-frequency relation (MFR, as known as Gutenberg-Richter relation, a- and b-values) from synthetic or real data by determining magnitude of completeness (Mc) and goodness of fit.
