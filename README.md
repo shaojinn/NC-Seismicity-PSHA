@@ -8,6 +8,7 @@ NC earthquakes catalogue and hazard analysis
 This is the archive of the earthquake catalogue python programs to generate the results in Chin et al (2022).
 ## Earthquake catalogue
 The earthquake catalogue is archived in nordic format (SEISAN). Detailed description can be found in Chin et al. (2022).
+Polygons are coordinates defining the areas described in Chin et al. (2022).
 ## Programs
 ### ReadHyp.py
 * Read an earthquake catalogue in nordic format to event and phase lists and optionally output a summary earthquake catalogue in csv format.
