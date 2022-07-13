@@ -61,6 +61,8 @@ def MlInversion(MatrixA,MatrixB,Stations):
     """
     Do ML inversion Ax=B and determine constant (in displacement in nm) and 
     station correcstions with sum of corrections = 0.
+    * It is an α version. Magnitude inversion results in Chin et al. (2022)
+    were done with Matlab.
 
     Parameters
     ----------
