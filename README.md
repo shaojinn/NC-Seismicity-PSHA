@@ -9,6 +9,7 @@ This is the archive of the earthquake catalogue and python programs to generate 
 ## Earthquake catalogue
 The earthquake catalogue is archived in nordic format (SEISAN). Detailed description can be found in Chin et al. (2022).
 Polygons are coordinates defining southern New Caledonia (SNC) and New Hebrides-Vanuatu subduction zone (NHV) in Chin et al. (2022).
+Velocity1D.txt- 1D velocity model determined with the earthquake catelogue with VELEST.
 ## Programs
 ### [ReadHyp.py](programs/ReadHyp.py)
 * Read an earthquake catalogue in nordic format to event and phase lists and optionally output a summary earthquake catalogue in csv format.
