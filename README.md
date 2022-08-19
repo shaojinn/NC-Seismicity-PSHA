@@ -23,7 +23,6 @@ Velocity1D.txt- 1D velocity model determined with the earthquake catelogue with 
 ### [PSHA_probability.py](programs/PSHA_probability.py)
 * Calculate annual probability of exceedance (PoE) of PGA with given MFR, magnitude range, site condition (Vs30), source zone, and site of interest.
 ### pga_M7.5_depth10km_*.dat
-* PGA(g) aggainst distances (km) predicted with set parameters (M=7.5, depth=10 km, Vs30=850 m/s) and GMPEs that built in OpenQuake.
-* For comparing output from GMPE.py.
+* PGA(g) aggainst distances (km) predicted with OpenQuake using set parameters (M=7.5, depth=10 km, Vs30=850 m/s) and corresponding GMPEs (Zh- Zhao et al., 2006; BA- Boore and Atkinson, 2008; CY- Chiou and Youngs, 2008) for comparing output from GMPE.py.
 ### [hazard_curves_Johnson2021.txt](programs/hazard_curves_Johnson2021.txt)
 * Hazard curves for Noumea and Port Vila in Johnson et al. (2021). Kindly provided by Dr. Kendra Johnson in Global Earthquake Model Foundation, Italy. One should ask them for permission before using it for other purposes.
