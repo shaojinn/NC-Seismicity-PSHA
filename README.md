@@ -22,3 +22,4 @@ Velocity1D.txt- 1D velocity model determined with the earthquake catelogue with 
 * Ground motion Equations (GMPE) to predict peak ground accelerations (PGA) for active shallow crust (ASC, Zhao et al., 2006, Boore and Atkinson, 2008, and Chiou and Youngs, 2008) and for subduction interface (SUB, Atkinson and Boore, 2003, Abrahamson et al., 2016, and Youngs et al., 1997).
 ### [PSHA_probability.py](programs/PSHA_probability.py)
 * Calculate annual probability of exceedance (PoE) of PGA with given MFR, magnitude range, site condition (Vs30), source zone, and site of interest.
+### [pga_M7.5]
