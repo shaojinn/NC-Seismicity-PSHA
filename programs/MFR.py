@@ -15,9 +15,10 @@ import geopandas
 from shapely.geometry import Polygon
 import copy
 
+workDir = '../NC_seismicity/'
 
 def mag_N(mode='synthetic', a=8, b=1, IncludeLargest=True, mBinWidth=0.1,
-          filename='EarthquakeCatalog.csv', region=False):
+          filename=workDir+'EarthquakeCatalog.csv', region=False):
     """
     Extract numbers of events at designed magnitude intervals from a real dataset 
     or generate synthetic ones from assigned a- and b-values. 
@@ -112,7 +113,7 @@ def mag_N(mode='synthetic', a=8, b=1, IncludeLargest=True, mBinWidth=0.1,
               geometry=geopandas.points_from_xy(df.longitude, df.latitude))
         # load and define a closed polygon geographic region of interest 
         if region:
-            polygonFilename = 'polygon_' + region + '.txt'
+            polygonFilename = workDir + 'polygon_' + region + '.txt'
             poly_lonlat = np.loadtxt(polygonFilename)
             # Create shapely.geometry.polygon.Polygon object with topology 
             poly = Polygon(poly_lonlat)
@@ -374,8 +375,7 @@ def plot_MFR(M,N,N_cumul,ac,bc,Mc,Rc,mode=False,region=False,xmax=False,
     plt.plot(M,10**N_cumul,marker='+',linestyle='',color='black')
     plt.bar(M,height=N,color='grey',width=0.1)
     plt.legend()
-
-    
+    plt.show()   
 
 #------------ Functions for specific implementation ---------------------
 def synthetic_test(a_ori=8,b_ori=1,IncludeLargest='True',R90='False'):
@@ -524,10 +524,11 @@ def fit_SNC(region='SNC',R90=False,plot_fig=False):
     a,b,Rs = fit_MFR(M, N, N_cumul)
     ac,bc,Mc,Rc = Mc_finder(a, b, M, Rs,R90=False,threshold=95)
     a0 = ac + bc * Mc
-    np.savetxt('MFR_' + region +'.txt', np.transpose([M,N,N_cumul,a,b,Rs]),
+    np.savetxt(workDir + 'MFR_' + region +'.txt', 
+               np.transpose([M,N,N_cumul,a,b,Rs]),
                header='M N N_cumul a b R',fmt='%.3f')
-    if plot_fig: plot_MFR(M, N, N_cumul, ac, bc, Mc, Rc, mode=mode, 
-                          region=region)
+    if plot_fig: 
+        plot_MFR(M, N, N_cumul, ac, bc, Mc, Rc, mode=mode,region=region)
     
     return(a0,bc)
     

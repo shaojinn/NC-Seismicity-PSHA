@@ -114,7 +114,7 @@ def MlInversion(MatrixA,MatrixB,Stations):
 
 if __name__ == '__main__':
     
-    filename = "hyp.out_NHV_SNC"
+    filename = '../NC_seismicity/hyp.out_NHV_SNC'
     IgnoreStationList = ['LIFNC','MA2NC','KOUNC']
     
     events,phases = ReadHyp.ReadHyp(filename,

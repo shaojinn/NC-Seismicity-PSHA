@@ -52,10 +52,10 @@ def a_normalise(a,time_ref,area_ref=False,R_max=200,method='circular'):
     """
     a_origin = a
     if method == 'linear' or method == 'from_file' or method == 'poly':
-        area_ref = 1
-        a = a + np.log10((area_ref * 1) / (area_ref * time_ref))
+        area_ref = 1.
+        a = a + np.log10((area_ref * 1.) / (area_ref * time_ref))
     elif method == 'circular' and (area_ref):
-        a = a + np.log10((R_max**2 * np.pi * 1) / (area_ref * time_ref))
+        a = a + np.log10((R_max**2 * np.pi * 1.) / (area_ref * time_ref))
         
     print(('a-value is normalised by area and time to %.2f' % a + ' (was %.2f)' 
            % a_origin))
@@ -325,7 +325,7 @@ def Prob_occurrence(M_min,M_max,M_step,alpha,beta,Depth,R,R_prob,D_max=False):
     if len(M) == len(r) and len(M) == len(d):
         N_events = len(M)
     else:
-        print('Noumber of events is incorrect')
+        print('Number of events is incorrect')
 
 ## Probability matrices of M, r, and d
     prob_M = prob_mag(M, M_step, alpha=alpha, beta=beta)
@@ -557,7 +557,7 @@ def PoE(region=False,V30=760,M_step=0.1,M_min=4.5,M_max=7.5,a=8,b=1,time_ref=1,
         Weighted PoE (0.4 * ZH06 + 0.3 * BA08 + 0.3 * CY08).    
 
     """
-    savefile = 'PGA.txt'
+    savefile = '../NC_seismicity/PGA.txt'
     if region == 'SNC':  #parameters for SNC from ITOPNC catalogue
         a,b = MFR.fit_SNC(region='SNC')
         a = np.round(a,decimals=2)
@@ -570,7 +570,7 @@ def PoE(region=False,V30=760,M_step=0.1,M_min=4.5,M_max=7.5,a=8,b=1,time_ref=1,
         M_max=7.5
         method = 'circular'
         filename = False
-        savefile = 'PGA_' + region + '.txt'
+        savefile = '../NC_seismicity/PGA_' + region + '.txt'
     elif region == 'NHV':  #parameters for NHV from USGS catalogue 2011 - 2020
         a = 8.16
         b = 1.33
@@ -585,7 +585,7 @@ def PoE(region=False,V30=760,M_step=0.1,M_min=4.5,M_max=7.5,a=8,b=1,time_ref=1,
         lon_ref = 166.4416
         lat_ref = -22.2711
         #filename='dist-percentage_NHV.dat'
-        filename = 'polygon_NHV.txt'
+        filename = '../NC_seismicity/polygon_NHV.txt'
             
 # Normalise a-value and convert to alpha, beta
     a = a_normalise(a,time_ref,R_max=R_max,area_ref=area_ref,
@@ -640,7 +640,7 @@ def PoE(region=False,V30=760,M_step=0.1,M_min=4.5,M_max=7.5,a=8,b=1,time_ref=1,
             np.savetxt(savefile,zzz.T,header='pga, AB03, An16, Ys97')
             return(pga,prob_pgaAB03,prob_pgaAn16,prob_pgaYs97)
 
-def plot_Jo21(file='./hazard_curves_Johnson2021.txt'):
+def plot_Jo21(file='./hazard_curves_Johnson2021.csv'):
     """
     Plot hazard curves of Noumea and Port Vila from Johnson et al. (2020) to 
     compare with.
@@ -658,8 +658,6 @@ def plot_Jo21(file='./hazard_curves_Johnson2021.txt'):
     None.
 
     """
-## Plot results from Johnson et al. (2021) to compare
-
     pga_JS = []
     pga_JS_NC = []
     pga_JS_VU = []

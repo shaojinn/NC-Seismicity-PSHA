@@ -710,6 +710,8 @@ def comparePGA(mag,dist,depth=10,V30=850,comparison=False,labeling=False):
 
     """
     
+    plt.figure(figsize=(6,5))
+
 #    r_rup = (dist**2 + depth**2)**(1 / 2)
     ln_pga,s = lnpgaZH06(mag,dist,depth=depth)
     ASC = 0.4 * ln_pga
@@ -749,8 +751,8 @@ def comparePGA(mag,dist,depth=10,V30=850,comparison=False,labeling=False):
         plt.plot(dist,pga_g(ln_pga + 2 * s),color='blue',linestyle=':')
         plt.plot(dist,pga_g(ln_pga - 2 * s),color='blue',linestyle=':')
     
-    plt.plot(dist,pga_g(ASC),color='black')
-    plt.plot(dist,pga_g(SUB),color='red')
+    plt.plot(dist,pga_g(ASC),color='black',label='0.4*Z06 + 0.3*BA08+0.3*CY08')
+    plt.plot(dist,pga_g(SUB),color='red',label='0.34*A06 + 0.33*Y08 + 0.33*A16')
     
     if (comparison):
         file = './pga_M7.5_dep10km_Zh.dat' 
@@ -783,12 +785,13 @@ def comparePGA(mag,dist,depth=10,V30=850,comparison=False,labeling=False):
     plt.xscale('log')
     plt.yscale('log')
     plt.xlim(10,500)
-    plt.ylim(1e-5,1)
+    plt.ylim(1e-6,2)
     plt.xlabel('Distance (km)')
     plt.ylabel('PGA (g)')
     if(labeling):
+        plt.text(200,1,'Magnitude '+str(mag[0]))
         plt.legend()
-   # plt.show()
+    plt.show()
     
     
 if __name__ == '__main__':
@@ -798,18 +801,10 @@ if __name__ == '__main__':
     # plot distance scaling
     
     dist = np.arange(1.,801.,1)
-    depth = 20
-    mag = np.ones_like(dist) * 5
-    comparePGA(mag,dist,depth=depth,labeling=True,comparison=False)
-    mag = np.ones_like(dist) * 6
-    comparePGA(mag,dist,depth=depth,comparison=False)
-    mag = np.ones_like(dist) * 7 
-    comparePGA(mag,dist,depth=depth,comparison=False)
-    mag = np.ones_like(dist) * 8 
-    comparePGA(mag,dist,depth=depth,comparison=False)
-    mag = np.ones_like(dist) * 9 
-    comparePGA(mag,dist,depth=depth,comparison=False)
-    plt.savefig('GMPE_CrustalSubduction.png',dpi=600)
-
+    depth = 20.
+    for magRef in range(5,10):
+        mag = np.ones_like(dist) * magRef
+        comparePGA(mag,dist,depth=depth,labeling=True,comparison=False)
+        plt.savefig('../NC_seismicity/GMPE_CrustalSubduction_mag' +
+                    str(magRef) + '.png',dpi=300)
     
-   

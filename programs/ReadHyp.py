@@ -128,6 +128,8 @@ def IgnoreStation(datalist,station):
 
 # generate a summary catalog text file from HYP output file
 if __name__ == '__main__':
-    ReadHyp('hyp.out_NHV_SNC',OutputCatalog=True)
+    inputFileName = '../NC_seismicity/hyp.out_NHV_SNC'
+    OutputFileName = '../NC_seismicity/EarthquakeCatalog.csv'
+    ReadHyp(inputFileName, OutputCatalog=True, OutputFileName=OutputFileName)
 
 
