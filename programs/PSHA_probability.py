@@ -580,7 +580,7 @@ def PoE(region=False,V30=760,M_step=0.1,M_min=4.5,M_max=7.5,a=8,b=1,time_ref=1,
         D_max = 50
         M_min = 6.0 
         M_max = 9.0
-        savefile = 'PGA_' + region + '.txt'
+        savefile = '../NC_seismicity/PGA_' + region + '.txt'
         method = 'poly'
         lon_ref = 166.4416
         lat_ref = -22.2711
@@ -640,12 +640,9 @@ def PoE(region=False,V30=760,M_step=0.1,M_min=4.5,M_max=7.5,a=8,b=1,time_ref=1,
             np.savetxt(savefile,zzz.T,header='pga, AB03, An16, Ys97')
             return(pga,prob_pgaAB03,prob_pgaAn16,prob_pgaYs97)
 
-def plot_Jo21(file='./hazard_curves_Johnson2021.csv'):
+def plot_Jo21(file='./hazard_curves_Johnson2021.txt'):
     """
-    Plot hazard curves of Noumea and Port Vila from Johnson et al. (2020) to 
-    compare with.
-    One should request a numerical copy of the result of Johnson et al. (2020) 
-    to make the plot.
+    Plot hazard curves of Noumea and Port Vila from Johnson et al. (2021).
     
     Parameters
     ----------
